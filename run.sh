@@ -8,7 +8,7 @@ echo "Adding ROOT.war to /usergrid"
 pushd /usergrid/ROOT
 jar xvf ./ROOT.war
 rm ROOT.war
-jar -xf ./WEB-INF/lib/usergrid-config-1.0.0.jar
+jar -xf ./WEB-INF/lib/usergrid-config-2.1.0-SNAPSHOT.jar
 
 # make changes
 
@@ -19,10 +19,10 @@ if [[ ! -z "$CASSANDRA_URL" ]]; then
 fi
 
 # make jar of updated usergrid properties
-jar cf usergrid-config-1.0.0.jar usergrid-default.properties
+jar cf usergrid-config-2.1.0-SNAPSHOT.jar usergrid-default.properties
 
-cp usergrid-config-1.0.0.jar ./WEB-INF/lib/
-rm usergrid-config-1.0.0.jar usergrid-default.properties
+cp usergrid-config-2.1.0-SNAPSHOT.jar ./WEB-INF/lib/
+rm usergrid-config-2.1.0-SNAPSHOT.jar usergrid-default.properties
 
 # make war
 echo "Making ROOT.war"
