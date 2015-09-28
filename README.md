@@ -1,7 +1,8 @@
 apache-usergrid
 ===================
 Used elements of [tutum-docker-tomcat](https://github.com/tutumcloud/tutum-docker-tomcat) as Tomcat build manifest.
-Based on [docker-usergrid][https://github.com/sumanyu/docker-usergrid]
+
+Based on [docker-usergrid](https://github.com/sumanyu/docker-usergrid)
 
 Usage
 -----

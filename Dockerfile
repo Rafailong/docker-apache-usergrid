@@ -10,7 +10,7 @@ MAINTAINER Rafael Avila <rafa.avim@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV TOMCAT_CONFIGURATION_FLAG /usergrid/.tomcat_admin_created
 
-Install commong packages
+# Install commong packages
 RUN apt-get update
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y python-software-properties
@@ -56,7 +56,7 @@ WORKDIR /temp/usergrid-master/stack
 RUN mvn clean install -DskipTests=true
 
 # Deploy WAR file
-RUN mkdir /usergrid-master/ROOT
+RUN mkdir -p /usergrid/ROOT
 RUN cp /temp/usergrid-master/stack/rest/target/ROOT.war /usergrid/ROOT/
 
 # Expose ports
