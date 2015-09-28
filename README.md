@@ -94,3 +94,7 @@ set the environment variable `TOMCAT_PASS` to your specific password when runnin
 Following environmental variables are available:
 
 * `TOMCAT_PASS` (**Optional**, default: random generated) - Tomcat instance password, use if required. You won't probably need this.
+
+You can set a Cassandra URL. Just add
+
+* `CASSANDRA_URL` (**Optional**, default: localhost/127.0.0.1)
