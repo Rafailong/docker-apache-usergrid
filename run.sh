@@ -10,13 +10,13 @@ jar xvf ./ROOT.war
 rm ROOT.war
 jar -xf ./WEB-INF/lib/usergrid-config-2.1.0-SNAPSHOT.jar
 
-# make changes
+# # make changes
+echo "Custom Cassandra URL: $CASSANDRA_URL"
+echo "Custom elasticsearch host: $ELASTICSEARCH_HOST"
+echo "Custom elasticsearch port: $ELASTICSEARCH_PORT"
 
-if [[ ! -z "$CASSANDRA_URL" ]]; then
-   echo "Setting Cassandra host"
-   sed -i "s/cassandra.url=.*/cassandra.url=$CASSANDRA_URL/g" ./usergrid-default.properties
-   echo "cassandra.url set to: ${CASSANDRA_URL}"
-fi
+cat /dev/null > ./usergrid-default.properties
+cat /usergrid/usergrid-deploy.properties > ./usergrid-default.properties
 
 # make jar of updated usergrid properties
 jar cf usergrid-config-2.1.0-SNAPSHOT.jar usergrid-default.properties
@@ -45,3 +45,5 @@ if [ ! -f ${TOMCAT_CONFIGURATION_FLAG} ]; then
 fi
 
 exec /usr/share/tomcat7/bin/catalina.sh run
+
+# docker run -d --name usergrid --link elasticsearch:elasticsearch --link cassandra:cassandra -p 8080:8080 -p 8443:8443 -t usergrid -e "CASSANDRA_URL=172.17.0.73:9160" -e "ELASTICSEARCH_HOST=172.17.0.73" -e "ELASTICSEARCH_PORT=9300"

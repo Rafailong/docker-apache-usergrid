@@ -30,6 +30,7 @@ RUN apt-get install -y tomcat7
 RUN mkdir /usergrid
 WORKDIR /usergrid
 
+ADD usergrid-deploy.properties /usergrid/usergrid-deploy.properties
 ADD create_tomcat_admin_user.sh /usergrid/create_tomcat_admin_user.sh
 ADD run.sh /usergrid/run.sh
 RUN chmod +x /usergrid/*.sh
@@ -64,4 +65,4 @@ EXPOSE 8080
 
 # Run usergrid
 WORKDIR /usergrid
-ENTRYPOINT ./run.sh
+ENTRYPOINT /bin/bash
